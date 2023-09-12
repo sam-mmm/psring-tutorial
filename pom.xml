@@ -21,7 +21,7 @@
 		<module>payment-service</module>
 		<module>payloads</module>
 		<module>configuration-service</module>
-		<module>registry-service</module>
+		<module>discovery-service</module>
 		<module>api-gateway-service</module>
 	</modules>
 	<properties>
