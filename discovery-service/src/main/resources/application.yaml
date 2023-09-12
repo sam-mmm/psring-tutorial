@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: discovery-service-application
+  profiles:
+    active: development
+  config:
+    import: optional:configserver:http://localhost:8080/

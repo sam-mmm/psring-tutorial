@@ -6,5 +6,5 @@ spring:
           uri: https://github.com/sam-mmm/spring-tutorial.git
           search-paths:
             - configurations
-          default-label: 02-with-spring-cloud-integration
+          default-label: 03-basic-setup-for-registry-service
           clone-on-start: true
