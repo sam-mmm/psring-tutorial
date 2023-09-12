@@ -7,3 +7,4 @@ spring:
           search-paths:
             - configurations
           default-label: 02-with-spring-cloud-integration
+          clone-on-start: true
