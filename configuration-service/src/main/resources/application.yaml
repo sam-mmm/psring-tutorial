@@ -6,5 +6,5 @@ spring:
           uri: https://github.com/sam-mmm/spring-tutorial.git
           search-paths:
             - configurations
-          default-label: 04-basic-setup-for-load-balancers
+          default-label: 04-basic-setup-for-load-balancer
           clone-on-start: true
