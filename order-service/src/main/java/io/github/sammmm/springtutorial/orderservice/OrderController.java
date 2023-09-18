@@ -17,7 +17,7 @@ public class OrderController {
         this.restTemplate = restTemplate;
     }
 
-    @GetMapping("make/an/order/{customerId}/{productId}/{qty}")
+    @GetMapping("make/an/order/with/at/load/balance/{customerId}/{productId}/{qty}")
     public Order calcMultiply(@PathVariable("customerId") int customerId, @PathVariable("productId") int productId, @PathVariable("qty") int quantity) {
         Customer customer = restTemplate.getForEntity("http://CUSTOMER-SERVICE-APPLICATION/customer/by/{id}", Customer.class, customerId).getBody();
         Product product = restTemplate.getForEntity("http://PRODUCT-SERVICE-APPLICATION/product/by/{id}", Product.class, productId).getBody();
