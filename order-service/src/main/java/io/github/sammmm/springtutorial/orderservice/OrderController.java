@@ -23,7 +23,13 @@ public class OrderController {
 
     @GetMapping("make/an/order/with/at/load/balance/{customerId}/{productId}/{qty}")
     public Order makeAnOrderWithAtLoadBalance(@PathVariable("customerId") int customerId, @PathVariable("productId") int productId, @PathVariable("qty") int quantity) {
-        Customer customer = restTemplate.getForEntity("http://CUSTOMER-SERVICE-APPLICATION/customer/by/{id}", Customer.class, customerId).getBody();
+        Customer customer = null;
+        try {
+            customer = restTemplate.getForEntity("http://CUSTOMER-SERVICE-APPLICATION/customer/by/{id}", Customer.class, customerId).getBody();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("SUCCESS::" + customer);
         Product product = restTemplate.getForEntity("http://PRODUCT-SERVICE-APPLICATION/product/by/{id}", Product.class, productId).getBody();
         return new Order(1, customer, product, quantity, quantity * product.price());
     }
