@@ -14,8 +14,7 @@ public class CustomerController {
     }
 
     @GetMapping("customer/by/{id}")
-    public Customer customerById(@PathVariable("id") int id) throws InterruptedException {
-        Thread.sleep(1000 * 60 * 60);
+    public Customer customerById(@PathVariable("id") int id) {
         return repository.byId(id);
     }
 }

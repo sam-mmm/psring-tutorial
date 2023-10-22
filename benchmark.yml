@@ -1,0 +1,15 @@
+---
+
+concurrency: 4
+base: 'http://localhost:8081/ORDER-SERVICE-APPLICATION'
+iterations: 5
+rampup: 2
+
+plan:
+  - name: Make order - load balancer
+    request:
+      url: /make/an/order/with/at/load/balance/1/1/1
+
+  - name: Make order - feign client
+    request:
+      url: /make/an/order/with/feign/client/1/1/1
