@@ -1,0 +1,11 @@
+---
+
+concurrency: 10
+base: 'http://localhost:8081/ORDER-SERVICE-APPLICATION'
+iterations: 10
+rampup: 2
+
+plan:
+  - name: Make order - load balancer
+    request:
+      url: /api/timeDelay/10
