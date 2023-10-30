@@ -1,0 +1,41 @@
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/1/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/2/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/3/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/4/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/5/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/6/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/7/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/8/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/9/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/10/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/11/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/12/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/13/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/14/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/15/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/16/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/17/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/18/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/19/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/at/load/balance/20/1/1
+
+GET http://localhost:8081/ORDER-SERVICE-APPLICATION/make/an/order/with/feign/client/1/1/1

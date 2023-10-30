@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class OrderController {
-
     private final RestTemplate restTemplate;
     private final CustomerClient customerClient;
     private final ProductClient productClient;
@@ -40,4 +39,5 @@ public class OrderController {
         Product product = productClient.byId(productId);
         return new Order(1, customer, product, quantity, quantity * product.price());
     }
+
 }
