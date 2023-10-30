@@ -6,6 +6,7 @@ import io.github.resilience4j.core.registry.EntryRemovedEvent;
 import io.github.resilience4j.core.registry.EntryReplacedEvent;
 import io.github.resilience4j.core.registry.RegistryEventConsumer;
 import io.github.resilience4j.ratelimiter.RateLimiter;
+import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.timelimiter.TimeLimiter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +35,6 @@ public class OrderServiceApplication {
 
     @Bean
     public RegistryEventConsumer<CircuitBreaker> circuitBreakerEventConsumer() {
-        logger.info("@@@@@@@@@@@@@@@@");
         return new RegistryEventConsumer<CircuitBreaker>() {
 
             @Override
@@ -77,7 +77,6 @@ public class OrderServiceApplication {
 
     @Bean
     public RegistryEventConsumer<TimeLimiter> timeLimiterEventConsumer() {
-        logger.info("######################");
         return new RegistryEventConsumer<TimeLimiter>() {
             @Override
             public void onEntryAddedEvent(EntryAddedEvent<TimeLimiter> entryAddedEvent) {
@@ -129,6 +128,35 @@ public class OrderServiceApplication {
                 entryReplacedEvent.getNewEntry().getEventPublisher()
                         .onEvent(event -> logger.error("time limiter replaced {} ",
                                 event.getNumberOfPermits())
+                        );
+            }
+        };
+    }
+
+    @Bean
+    public RegistryEventConsumer<Retry> retryEventConsumer() {
+        return new RegistryEventConsumer<Retry>() {
+            @Override
+            public void onEntryAddedEvent(EntryAddedEvent<Retry> entryAddedEvent) {
+                entryAddedEvent.getAddedEntry().getEventPublisher()
+                        .onEvent(event -> logger.error("Bar time limiter {} timeout {} on {}",
+                                event.getName(), event.getEventType(), event.getCreationTime())
+                        );
+            }
+
+            @Override
+            public void onEntryRemovedEvent(EntryRemovedEvent<Retry> entryRemoveEvent) {
+                entryRemoveEvent.getRemovedEntry().getEventPublisher()
+                        .onEvent(event -> logger.error("time limiter removed {}",
+                                event.getName())
+                        );
+            }
+
+            @Override
+            public void onEntryReplacedEvent(EntryReplacedEvent<Retry> entryReplacedEvent) {
+                entryReplacedEvent.getNewEntry().getEventPublisher()
+                        .onEvent(event -> logger.error("time limiter replaced {} ",
+                                event.getNumberOfRetryAttempts())
                         );
             }
         };
