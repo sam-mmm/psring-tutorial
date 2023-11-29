@@ -15,30 +15,8 @@ public class Resilience4jController {
         this.demoService = demoService;
     }
 
-    @GetMapping("/circuit-breaker")
-    public String circuitBreaker() {
-        return demoService.circuitBreaker();
-    }
-
-    @GetMapping("/bulkhead")
-    public String bulkhead() {
-        return demoService.bulkHead();
-    }
-
-    @GetMapping("/time-limiter")
-    public CompletableFuture<String> timeLimiter() {
-        return demoService.timeLimiter();
-    }
-
-    @GetMapping("/rate-limiter")
-    public String rateLimiter() {
-        return demoService.rateLimiter();
-    }
-
     @GetMapping("/retry")
     public String retry() {
         return demoService.retry();
     }
 }
-//io.github.sammmm.springtutorial:payloads:jar:0.0.1
-//io/github/sammmm/springtutorial/payloads/0.0.1/payloads-0.0.1.jarcd 
