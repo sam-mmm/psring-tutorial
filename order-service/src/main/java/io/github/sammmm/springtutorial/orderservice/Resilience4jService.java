@@ -12,24 +12,6 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class Resilience4jService {
 
-    @CircuitBreaker(name = "example", fallbackMethod = "cbFallBack")
-    public String circuitBreaker() {
-        return cbRemoteCall();
-    }
-
-    private String cbRemoteCall() {
-        double random = Math.random();
-        //should fail more than 70% of time
-        if (random <= 0.7) {
-            throw new RuntimeException("CB Remote Call Fails");
-        }
-        return "CB Remote Call Executed";
-    }
-
-    public String cbFallBack(Exception exception) {
-        return String.format("Fallback Execution for Circuit Breaker. Error Message: %s\n", exception.getMessage());
-    }
-
     @RateLimiter(name = "example")
     public String rateLimiter() {
         return "Executing Rate Limited Method";

@@ -15,11 +15,6 @@ public class Resilience4jController {
         this.demoService = demoService;
     }
 
-    @GetMapping("/circuit-breaker")
-    public String circuitBreaker() {
-        return demoService.circuitBreaker();
-    }
-
     @GetMapping("/bulkhead")
     public String bulkhead() {
         return demoService.bulkHead();
