@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.CompletableFuture;
 
 @Service
-public class DemoService {
+public class Resilience4jService {
 
     @CircuitBreaker(name = "example", fallbackMethod = "cbFallBack")
     public String circuitBreaker() {

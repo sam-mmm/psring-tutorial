@@ -39,7 +39,7 @@
             <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.github.sammmm.springtutorial</groupId>
+            <groupId>io.github.sammmm.spring-tutorial</groupId>
             <artifactId>payloads</artifactId>
             <version>0.0.1</version>
             <scope>compile</scope>

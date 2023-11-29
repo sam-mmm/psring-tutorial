@@ -1,73 +1,44 @@
 package io.github.sammmm.springtutorial.orderservice;
 
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
 
-import java.time.Duration;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping("/resilience")
 public class Resilience4jController {
-    private static final String RESILIENCE4J_INSTANCE_NAME = "example";
-    private static final String FALLBACK_METHOD = "fallback";
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Resilience4jService demoService;
 
-    @GetMapping(
-            value = "/timeout/{timeout}",
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    @CircuitBreaker(name = RESILIENCE4J_INSTANCE_NAME, fallbackMethod = FALLBACK_METHOD)
-    @TimeLimiter(name = RESILIENCE4J_INSTANCE_NAME, fallbackMethod = FALLBACK_METHOD)
-    public Mono<Response<Boolean>> timeout(@PathVariable int timeout) {
-        return Mono.just(toOkResponse())
-                .delayElement(Duration.ofSeconds(timeout));
+    public Resilience4jController(Resilience4jService demoService) {
+        this.demoService = demoService;
     }
 
-    @GetMapping(value = "/timeDelay/{delay}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @CircuitBreaker(name = RESILIENCE4J_INSTANCE_NAME, fallbackMethod = FALLBACK_METHOD)
-    public Mono<Response<Boolean>> timeDelay(@PathVariable int delay) {
-        logger.info("In timeDelay");
-        return Mono.just(toOkResponse())
-                .delayElement(Duration.ofSeconds(delay));
+    @GetMapping("/circuit-breaker")
+    public String circuitBreaker() {
+        return demoService.circuitBreaker();
     }
 
-    @GetMapping(
-            value = "/error/{valid}",
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    @CircuitBreaker(name = RESILIENCE4J_INSTANCE_NAME, fallbackMethod = FALLBACK_METHOD)
-    public Mono<Response<Boolean>> error(@PathVariable boolean valid) {
-        return Mono.just(valid)
-                .flatMap(this::toOkResponse);
+    @GetMapping("/bulkhead")
+    public String bulkhead() {
+        return demoService.bulkHead();
     }
 
-    public Mono<Response<Boolean>> fallback(Exception ex) {
-        return Mono.just(toResponse(HttpStatus.INTERNAL_SERVER_ERROR, Boolean.FALSE))
-                .doOnNext(result -> logger.warn("fallback executed"));
+    @GetMapping("/time-limiter")
+    public CompletableFuture<String> timeLimiter() {
+        return demoService.timeLimiter();
     }
 
-    private Mono<Response<Boolean>> toOkResponse(boolean valid) {
-        if (!valid) {
-            return Mono.just(toOkResponse());
-        }
-        return Mono.error(new RuntimeException("error"));
+    @GetMapping("/rate-limiter")
+    public String rateLimiter() {
+        return demoService.rateLimiter();
     }
 
-    private Response<Boolean> toOkResponse() {
-        return toResponse(HttpStatus.OK, Boolean.TRUE);
-    }
-
-    private Response<Boolean> toResponse(HttpStatus httpStatus, Boolean result) {
-        Response<Boolean> response = new Response<>(httpStatus.value(), httpStatus.getReasonPhrase(), result);
-        return response;
+    @GetMapping("/retry")
+    public String retry() {
+        return demoService.retry();
     }
 }
+//io.github.sammmm.springtutorial:payloads:jar:0.0.1
+//io/github/sammmm/springtutorial/payloads/0.0.1/payloads-0.0.1.jarcd 

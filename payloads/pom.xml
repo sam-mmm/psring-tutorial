@@ -8,7 +8,7 @@
         <artifactId>spring-tutorial</artifactId>
         <version>0.0.1</version>
     </parent>
-    <groupId>io.github.sammmm.springtutorial</groupId>
+    <groupId>io.github.sammmm.spring-tutorial</groupId>
     <artifactId>payloads</artifactId>
 
     <properties>
