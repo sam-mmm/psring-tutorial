@@ -40,5 +40,3 @@ public class Resilience4jController {
         return demoService.retry();
     }
 }
-//io.github.sammmm.springtutorial:payloads:jar:0.0.1
-//io/github/sammmm/springtutorial/payloads/0.0.1/payloads-0.0.1.jarcd 
