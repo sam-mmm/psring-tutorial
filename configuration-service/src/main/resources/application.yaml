@@ -6,5 +6,5 @@ spring:
           uri: https://github.com/sam-mmm/spring-tutorial.git
           search-paths:
             - configurations
-          default-label: 09-circuit-breaker-resilience4j-time-limiter
+          default-label: 09-resilience4j-time-limiter
           clone-on-start: true
